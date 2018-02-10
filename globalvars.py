@@ -70,7 +70,8 @@ class GlobalVars:
         "potentially bad keyword in title",
         "potentially bad keyword in username",
         "toxic body detected",
-        "toxic answer detected"
+        "toxic answer detected",
+        "potentially bad username"
     }
 
     parser = HTMLParser()
