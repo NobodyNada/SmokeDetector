@@ -48,3 +48,14 @@ def test_unshorten_link(shortened, original):
 ])
 def test_api_parameter_from_link(link, param):
     assert helpers.api_parameter_from_link(link) == param
+
+
+@pytest.mark.parametrize('raw, cleaned', [
+    ('test', 'test'),
+    ('te<i>s</i>t', 'te*s*t'),
+    ('te<b>s</b>t', 'te**s**t'),
+    ('te<code>s</code>t', 'te`s`t'),
+    ('(?<=/)t\.me(?=/)', '(?<=/)t\.me(?=/)'),
+])
+def test_clean_html(raw, cleaned):
+    assert helpers.clean_html(raw) == cleaned
